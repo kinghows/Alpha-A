@@ -1,20 +1,38 @@
 # Alpha-A
 # 量化投资--一个全栈实验项目
 
-## 数据爬取：scrapy
-
-Python 2.7
+## 数据爬取
 
 目录：DataSpider/quant
 
-## 数据存储：MySQL
+Python 2.7
+
+## 数据存储
 
 目录：Database
 
-## 后台：falcon
+MySQL
 
-## 前端APP：ionic+Angular
+## 后台
 
-## 微信端：flask
+目录：ServerAPI
 
-## 邮件订阅：Python
+falcon
+
+## 前端APP
+
+ionic版：目录：ionic
+
+flutter版： 目录：flutter
+
+## 微信端
+
+目录：weixi
+
+flask
+
+## 邮件订阅
+
+目录：Email
+
+Python
