@@ -21,13 +21,13 @@ falcon
 
 ## 前端APP
 
-ionic版：目录：ionic
+ionic版：目录：Ionic
 
-flutter版： 目录：flutter
+flutter版： 目录：Flutter
 
 ## 微信端
 
-目录：weixi
+目录：Weixi
 
 flask
 
