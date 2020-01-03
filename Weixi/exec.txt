@@ -1,0 +1,2 @@
+cd /root/alphaa
+sudo nohup python main.py 80
