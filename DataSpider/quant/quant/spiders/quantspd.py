@@ -30,7 +30,7 @@ class quantspd(scrapy.spiders.Spider):
 
     def f_get_conn(self):
         try:
-            conn = MySQLdb.connect(host='192.168.1.31', user='quant', passwd='quant', db='quant', port=3306)
+            conn = MySQLdb.connect(host='127.0.0.1', user='quant', passwd='quant', db='quant', port=3306)
 	    cur = conn.cursor()
 	    conn.set_character_set('utf8')
             cur.execute('SET NAMES utf8;') 
