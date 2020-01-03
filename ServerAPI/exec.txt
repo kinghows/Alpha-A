@@ -1,0 +1,2 @@
+cd /root
+gunicorn -b 192.168.1.31:9000 --reload alphab.app
