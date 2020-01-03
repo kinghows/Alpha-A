@@ -3,7 +3,13 @@
 
 数据爬取：scrapy
 
+Python 2.7
+
+目录：DataSpider/quant
+
 数据存储：MySQL
+
+目录：Database
 
 后台：falcon
 
