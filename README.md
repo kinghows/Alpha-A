@@ -35,4 +35,4 @@ flask
 
 目录：Email
 
-Python
+Python2.7
