@@ -1,13 +1,6 @@
 # Alpha-A
 # 量化投资--一个全栈实验项目
 
-example:
-
-![指数](https://github.com/kinghows/Alpha-A/blob/master/Demo/01.jpg)
-![新闻动态](https://github.com/kinghows/Alpha-A/blob/master/Demo/02.jpg)
-![异动池](https://github.com/kinghows/Alpha-A/blob/master/Demo/03.jpg)
-![市场分析](https://github.com/kinghows/Alpha-A/blob/master/Demo/13.jpg)
-
 ## 数据爬取
 
 目录：DataSpider/quant
@@ -43,3 +36,12 @@ flask
 目录：Email
 
 Python
+
+## Demo:
+
+目录：Demo
+
+![指数](https://github.com/kinghows/Alpha-A/blob/master/Demo/01.jpg)
+![新闻动态](https://github.com/kinghows/Alpha-A/blob/master/Demo/02.jpg)
+![异动池](https://github.com/kinghows/Alpha-A/blob/master/Demo/03.jpg)
+![市场分析](https://github.com/kinghows/Alpha-A/blob/master/Demo/13.jpg)
