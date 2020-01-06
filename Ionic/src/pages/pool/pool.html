@@ -1,0 +1,283 @@
+<style type="text/css">
+/* Table Head */
+#table-7 thead th {
+background-color: rgb(81, 130, 187);
+color: #fff;
+border-bottom-width: 0;
+}
+
+/* Column Style */
+#table-7 td {
+color: #000;
+}
+/* Heading and Column Style */
+#table-7 tr, #table-7 th {
+border-width: 1px;
+border-style: solid;
+border-color: rgb(81, 130, 187);
+}
+
+/* Padding and font style */
+#table-7 td, #table-7 th {
+padding: 5px 10px;
+font-size: 12px;
+font-family: Verdana;
+font-weight: bold;
+}
+</style> 
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      股票池
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar color="light">
+    <ion-segment class="top_segment" [(ngModel)]="top_segment">
+      <ion-segment-button (click)="select(0)" value="top_0">
+        异动
+      </ion-segment-button>
+      <ion-segment-button (click)="select(1)" value="top_1">
+        风口
+      </ion-segment-button>
+      <ion-segment-button (click)="select(2)" value="top_2">
+        主题
+      </ion-segment-button>
+      <ion-segment-button (click)="select(3)" value="top_3">
+        强势
+      </ion-segment-button>
+	  <ion-segment-button (click)="select(4)" value="top_4">
+        涨停
+      </ion-segment-button>
+	  <ion-segment-button (click)="select(5)" value="top_5">
+        昨涨
+      </ion-segment-button>
+      <ion-segment-button (click)="select(6)" value="top_6">
+        炸板
+      </ion-segment-button>
+      <ion-segment-button (click)="select(7)" value="top_7">
+        跌停
+      </ion-segment-button>        
+	  <ion-segment-button (click)="select(8)" value="top_8">
+        新股
+      </ion-segment-button>
+	  <ion-segment-button (click)="select(9)" value="top_9">
+        次新
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content has-bouncing="false">
+  
+<ion-slides
+(pan)="panEvent($event)"
+ #mySlider (ionDrag)="onSlideChanged($event)"
+ >
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>股票</th>
+          <th>时间</th>
+          <th>现价</th>
+	      <th>涨跌</th>
+          <th>涨速</th>
+        </thead>
+		<tbody>
+          <tr *ngFor="let item of listData0"> 
+            <td>{{item?.stock_name}}</td>
+            <td>{{item?.time}}</td>
+            <td>{{item?.last_px}}</td>
+	        <td>{{item?.pcp}}</td>
+            <td>{{item?.pcr}}</td>
+          </tr>
+		</tbody>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>主题</th>
+          <th>股票</th>
+          <th>现价</th>
+	      <th>涨跌</th>
+		  <th>换手率</th>
+        </thead>
+		<tbody>
+          <tr *ngFor="let item of listData1"> 
+            <td>{{item?.theme}}</td>
+            <td>{{item?.stock_name}}</td>
+            <td>{{item?.price}}</td>
+	        <td>{{item?.change_rate}}</td>
+			<td>{{item?.turnover_ratio}}</td>
+          </tr>
+		</tbody>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>主题</th>
+          <th>股票</th>
+          <th>现价</th>
+	      <th>涨跌</th>
+		  <th>换手率</th>
+        </thead>
+        <tr *ngFor="let item of listData2"> 
+          <td>{{item?.theme}}</td>
+          <td>{{item?.stock_name}}</td>
+          <td>{{item?.price}}</td>
+		  <td>{{item?.change_rate}}</td>
+		  <td>{{item?.turnover_ratio}}</td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>股票</th>
+          <th>现价</th>
+	      <th>涨跌</th>
+		  <th>换手率</th>
+		  <th>几天几板</th>
+        </thead>
+        <tr *ngFor="let item of listData3"> 
+          <td>{{item?.stock_name}}</td>
+          <td>{{item?.price}}</td>
+	      <td>{{item?.change_rate}}</td>
+		  <td>{{item?.turnover_ratio}}</td>
+		  <td>{{item?.board_days}}</td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>股票</th>
+          <th>现价</th>
+		  <th>换手率</th>
+	      <th>最后封板</th>
+		  <th>涨停强度</th>
+        </thead>
+        <tr *ngFor="let item of listData4"> 
+          <td>{{item?.stock_name}}</td>
+          <td>{{item?.price}}</td>
+		  <td>{{item?.turnover_ratio}}</td>
+	      <td>{{item?.last_raise_time}}</td>
+          <td>{{item?.blockade_ratio}}</td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>股票</th>
+          <th>现价</th>
+          <th>涨跌</th>
+		  <th>换手率</th>
+	      <th>昨封板</th>
+        </thead>
+        <tr *ngFor="let item of listData5"> 
+          <td>{{item?.stock_name}}</td>
+          <td>{{item?.price}}</td>
+          <td>{{item?.change_rate}}</td>
+		  <td>{{item?.turnover_ratio}}</td>
+	      <td>{{item?.last_raise_time}}</td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>股票</th>
+          <th>现价</th>
+	      <th>涨跌</th>
+		  <th>换手率</th>
+		  <th>最后炸板</th>
+        </thead>
+        <tr *ngFor="let item of listData6"> 
+          <td>{{item?.stock_name}}</td>
+          <td>{{item?.price}}</td>
+		  <td>{{item?.change_rate}}</td>
+		  <td>{{item?.turnover_ratio}}</td>
+          <td>{{item?.last_boom_time}}</td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>股票</th>
+          <th>现价</th>
+	      <th>封板率</th>
+		  <th>换手率</th>
+		  <th>最后封板</th>
+        </thead>
+        <tr *ngFor="let item of listData7"> 
+          <td>{{item?.stock_name}}</td>
+          <td>{{item?.price}}</td>
+		  <td>{{item?.blockade_ratio}}</td>
+		  <td>{{item?.turnover_ratio}}</td>
+          <td>{{item?.last_board_time}}</td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>股票</th>
+          <th>现价</th>
+	      <th>涨跌</th>
+		  <th>换手率</th>
+		  <th>连板数</th>
+        </thead>
+        <tr *ngFor="let item of listData8"> 
+          <td>{{item?.stock_name}}</td>
+          <td>{{item?.price}}</td>
+          <td>{{item?.change_rate}}</td>
+          <td>{{item?.turnover_ratio}}</td>
+          <td>{{item?.before_open_count}}</td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+  <ion-slide>
+    <ion-scroll scrollY="true" class="fixed-content">
+      <table id="table-7">
+        <thead>
+          <th>股票</th>
+          <th>现价</th>
+	      <th>涨跌</th>
+		  <th>换手率</th>
+		  <th>开板天数</th>
+        </thead>
+        <tr *ngFor="let item of listData9"> 
+          <td>{{item?.stock_name}}</td>
+          <td>{{item?.price}}</td>
+          <td>{{item?.change_rate}}</td>
+		  <td>{{item?.turnover_ratio}}</td>
+          <td>{{item?.open_board_day}}</td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-slide>
+ 
+</ion-slides>
+</ion-content>

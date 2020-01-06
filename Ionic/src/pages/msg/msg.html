@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      股市动态
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let item of listData">
+   <div>
+    <h6> </h6>
+    <h3 style="color:blue">{{item?.time}}   {{item?.theme}} {{item?.stock_group}}</h3>
+   </div>
+   
+   <div>
+	<h2 style="word-wrap:break-word;white-space:normal;">{{item?.title}} </h2>
+   </div>
+   <div>
+	<h3 style="color:grey;word-wrap:break-word;white-space:normal;">{{item?.detail}} </h3>
+   </div>
+  </ion-item>
+</ion-content>

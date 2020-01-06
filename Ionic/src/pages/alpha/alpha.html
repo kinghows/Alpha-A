@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      市场分析
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let item of listData">
+   <div>
+    <h6> </h6>
+    <h3 style="color:blue">{{item?.date}} {{item?.time}} {{item?.title}}</h3>
+   </div>
+
+   <div>
+	<h3 style="word-wrap:break-word;white-space:normal;">{{item?.detail}} </h3>
+   </div>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>股指</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item *ngFor="let item of listData1">
+  <div *ngIf="item.zd == '+'" style="color:red"> 
+    <span (click)="goTochart()">{{item?.indexs}}</span>
+    <span>{{item?.ivalue}}</span>
+    <span>{{item?.ichange}}</span>
+    <span>{{item?.iratio}}</span>
+  </div>
+  <div *ngIf="item.zd == '-'" style="color:green"> 
+    <span (click)="goTochart()">{{item?.indexs}}</span>
+    <span>{{item?.ivalue}}</span>
+    <span>{{item?.ichange}}</span>
+    <span>{{item?.iratio}}</span>
+  </div>
+  <div *ngIf="item.zd == '0'" style="color:gray"> 
+    <span (click)="goTochart()">{{item?.indexs}}</span>
+    <span>{{item?.ivalue}}</span>
+    <span>{{item?.ichange}}</span>
+    <span>{{item?.iratio}}</span>
+  </div>
+  </ion-item>
+
+  <ion-item *ngFor="let item of listData2">
+   <div>
+    <span style="color:red">涨：{{item?.rose}}</span>
+	<span style="color:green">跌：{{item?.fell}}</span>
+    <span style="color:gray">平：{{item?.flat}}</span>
+   </div>
+  </ion-item>
+
+  <ion-item *ngFor="let item of listData3">
+   <span>市场热度：</span>
+   <div *ngIf="item?.heat_ratio_n <=25">
+    <div class="progress" >
+     <div class="progress-bar" [style.width] ="item?.heat_ratio" style="background-color: green" >{{item?.heat_ratio}}</div>
+    </div>
+   </div>
+   <div *ngIf="item?.heat_ratio_n <=50 && item?.heat_ratio_n >25">
+    <div class="progress" >
+     <div class="progress-bar" [style.width] ="item?.heat_ratio" style="background-color: #82D900;">{{item?.heat_ratio}}</div>
+    </div>
+   </div>
+   <div *ngIf="item?.heat_ratio_n <=75 && item?.heat_ratio_n >50">
+    <div class="progress" >
+     <div class="progress-bar" [style.width] ="item?.heat_ratio" style="background-color: #FF5809;">{{item?.heat_ratio}}</div>
+    </div>
+   </div>
+   <div *ngIf="item?.heat_ratio_n >75">
+    <div class="progress" >
+     <div class="progress-bar" [style.width] ="item?.heat_ratio" style="background-color: red;">{{item?.heat_ratio}}</div>
+    </div>
+   </div>
+
+   <div>
+	  <span style="color:red">涨停：{{item?.limit_up}}</span>
+    <span style="color:green">炸板：{{item?.limit_lose}}</span>        
+	  <span>炸板率：{{item?.lose_ratio}}</span>
+   </div>
+  </ion-item>
+  
+  <table>
+    <tr> 
+	  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td>
+        <table style="color:red">
+          <tr *ngFor="let item of listData4"> 
+            <td>{{item?.theme}}</td>
+            <td>{{item?.rate}}</td>
+          </tr>
+        </table>
+	  </td>
+	  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td>
+        <table style="color:green">
+          <tr *ngFor="let item of listData5"> 
+            <td>{{item?.theme}}</td>
+            <td>{{item?.rate}}</td>
+          </tr>
+        </table>
+	  </td>
+    </tr>
+  </table>
+
+</ion-content>

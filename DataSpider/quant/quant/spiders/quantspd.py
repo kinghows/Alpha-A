@@ -123,24 +123,39 @@ class quantspd(scrapy.spiders.Spider):
             index="上证指数".decode('gbk').encode('utf8') 
             code='sh'
 	    ivalue = str(round(jsonindex[3],2))
-	    ichange =  str(round(jsonindex[4],2))
-	    iratio =  str(round(jsonindex[5],2))+'%'
+	    ichange = round(jsonindex[4],2)
+	    if ichange>0:
+	        ichange =  '+'+str(round(jsonindex[4],2))
+	        iratio =  '+'+str(round(jsonindex[5],2))+'%'
+	    else:
+	        ichange =  str(round(jsonindex[4],2))
+	        iratio =  str(round(jsonindex[5],2))+'%'
 	    rows.append((date,itime,index,ivalue,ichange,iratio,code))
             html = urllib2.urlopen("https://api-ddc-wscn.xuangubao.cn/market/real?fields=prod_name,trade_status,update_time,last_px,px_change,px_change_rate,preclose_px,open_px,high_px,low_px,amplitude,turnover_ratio,pe_rate,dyn_pe,dyn_pb_rate,market_value,circulation_value,turnover_volume,turnover_value,hq_type_code,securities_type,volume_ratio,circulation_shares,total_shares,bps&prod_code=399001.SZ")
             jsonindex = json.loads(html.read())['data']['snapshot']['399001.SZ']
             index="深证成指".decode('gbk').encode('utf8') 
             code='sz'
 	    ivalue = str(round(jsonindex[3],2))
-	    ichange =  str(round(jsonindex[4],2))
-	    iratio =  str(round(jsonindex[5],2))+'%'
+	    ichange = round(jsonindex[4],2)
+	    if ichange>0:
+	        ichange =  '+'+str(round(jsonindex[4],2))
+	        iratio =  '+'+str(round(jsonindex[5],2))+'%'
+	    else:
+	        ichange =  str(round(jsonindex[4],2))
+	        iratio =  str(round(jsonindex[5],2))+'%'
 	    rows.append((date,itime,index,ivalue,ichange,iratio,code))
 	    html = urllib2.urlopen("https://api-ddc-wscn.xuangubao.cn/market/real?fields=prod_name,trade_status,update_time,last_px,px_change,px_change_rate,preclose_px,open_px,high_px,low_px,amplitude,turnover_ratio,pe_rate,dyn_pe,dyn_pb_rate,market_value,circulation_value,turnover_volume,turnover_value,hq_type_code,securities_type,volume_ratio,circulation_shares,total_shares,bps&prod_code=399006.SZ")
             jsonindex = json.loads(html.read())['data']['snapshot']['399006.SZ']
             index="创业板指".decode('gbk').encode('utf8') 
             code='cy'
 	    ivalue = str(round(jsonindex[3],2))
-	    ichange =  str(round(jsonindex[4],2))
-	    iratio =  str(round(jsonindex[5],2))+'%'
+	    ichange = round(jsonindex[4],2)
+	    if ichange>0:
+	        ichange =  '+'+str(round(jsonindex[4],2))
+	        iratio =  '+'+str(round(jsonindex[5],2))+'%'
+	    else:
+	        ichange =  str(round(jsonindex[4],2))
+	        iratio =  str(round(jsonindex[5],2))+'%'
 	    rows.append((date,itime,index,ivalue,ichange,iratio,code))
 
             if itime <=930:
@@ -209,8 +224,8 @@ class quantspd(scrapy.spiders.Spider):
                 row = jsonstock[i]
                 stock_name = row['stock_chi_name']
                 price = row['price']
-                change_rate = str(round(float(row['change_percent']),2))+'%'
-                turnover_ratio = str(round(float(row['turnover_ratio']),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
                 circulation_value = str(round(float(row['non_restricted_capital'])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
                 total_value = str(round(float(row['total_capital'])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
                 pe = str(round(float(row['per'])))
@@ -278,8 +293,8 @@ class quantspd(scrapy.spiders.Spider):
                 row = jsonstock[i]
                 stock_name = row['stock_chi_name']
                 price = row['price']
-                change_rate = str(round(float(row['change_percent']),2))+'%'
-                turnover_ratio = str(round(float(row['turnover_ratio']),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
                 circulation_value = str(round(float(row['non_restricted_capital'])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
                 total_value = str(round(float(row['total_capital'])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
                 pe = str(round(float(row['per'])))
@@ -302,8 +317,8 @@ class quantspd(scrapy.spiders.Spider):
 	    for row in jsonstock:
 	        stock_name =row["stock_chi_name"]
 	        price = row["price"]
-		change_rate =str(round(float(row["change_percent"]),2))+'%'
-		turnover_ratio = str(round(float(row["turnover_ratio"]),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
 		circulation_value = str(round(float(row["non_restricted_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		total_value = str(round(float(row["total_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		if row["new_stock_break_limit_up"]==0:
@@ -332,8 +347,8 @@ class quantspd(scrapy.spiders.Spider):
 	    for row in jsonstock:
 	        stock_name =row["stock_chi_name"]
 	        price = row["price"]
-		change_rate =str(round(float(row["change_percent"]),2))+'%'
-		turnover_ratio = str(round(float(row["turnover_ratio"]),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
 		circulation_value = str(round(float(row["non_restricted_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		total_value = str(round(float(row["total_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		open_board_day = row["nearly_new_break_days"]
@@ -360,8 +375,8 @@ class quantspd(scrapy.spiders.Spider):
 	        stock_name =row["stock_chi_name"]
 		reason = row["surge_reason"]["stock_reason"]
 	        price = row["price"]
-		change_rate =str(round(float(row["change_percent"]),2))+'%'
-		turnover_ratio = str(round(float(row["turnover_ratio"]),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
 		circulation_value = str(round(float(row["non_restricted_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		total_value = str(round(float(row["total_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		continue_board_count = row["limit_up_days"]
@@ -386,9 +401,9 @@ class quantspd(scrapy.spiders.Spider):
 	        stock_name =row["stock_chi_name"]
 		reason =  row["surge_reason"]["stock_reason"]
 	        price = row["price"]
-		change_rate =str(round(float(row["change_percent"]),2))+'%'
-		blockade_ratio = str(round(float(row["buy_lock_volume_ratio"]),2))+'%'
-		turnover_ratio =str(round(float(row["turnover_ratio"]),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+		blockade_ratio = str(round(row["buy_lock_volume_ratio"]*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
 		circulation_value =str(round(float(row["non_restricted_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		total_value = str(round(float(row["total_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		first_raise_time = time.strftime('%H:%M:%S',time.localtime(row["first_limit_up"]))
@@ -416,8 +431,8 @@ class quantspd(scrapy.spiders.Spider):
 	        stock_name =row["stock_chi_name"]
 		reason =  row["surge_reason"]["stock_reason"]
 	        price = row["price"]
-		change_rate =str(round(float(row["change_percent"]),2))+'%'
-		turnover_ratio =str(round(float(row["turnover_ratio"]),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
 		circulation_value =str(round(float(row["non_restricted_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		total_value = str(round(float(row["total_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		first_raise_time = time.strftime('%H:%M:%S',time.localtime(row["first_limit_up"]))
@@ -444,9 +459,9 @@ class quantspd(scrapy.spiders.Spider):
 	    for row in jsonstock:
 	        stock_name =row["stock_chi_name"]
 	        price = row["price"]
-		change_rate =str(round(float(row["change_percent"]),2))+'%'
-		blockade_ratio = str(round(float(row["buy_lock_volume_ratio"]),2))+'%'
-		turnover_ratio =str(round(float(row["turnover_ratio"]),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+		blockade_ratio = str(round(row["buy_lock_volume_ratio"]*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
 		circulation_value =str(round(float(row["non_restricted_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		total_value = str(round(float(row["total_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		first_board_time = time.strftime('%H:%M:%S',time.localtime(row["first_limit_up"]))
@@ -473,8 +488,8 @@ class quantspd(scrapy.spiders.Spider):
 	        stock_name =row["stock_chi_name"]
 		reason =  row["surge_reason"]["stock_reason"]
 	        price = row["price"]
-		change_rate =str(round(float(row["change_percent"]),2))+'%'
-		turnover_ratio =str(round(float(row["turnover_ratio"]),2))+'%'
+                change_rate = str(round(row['change_percent']*100,2))+'%'
+                turnover_ratio = str(round(row['turnover_ratio']*100,2))+'%'
 		circulation_value =str(round(float(row["non_restricted_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		total_value = str(round(float(row["total_capital"])/100000000,2))+'亿'.decode('gbk').encode('utf8') 
 		first_raise_time = time.strftime('%H:%M:%S',time.localtime(row["first_limit_up"]))
@@ -500,8 +515,8 @@ class quantspd(scrapy.spiders.Spider):
 	    for row in jsonstock:
 	        stock_name =row["stock_chi_name"]
 		last_px = row["price"]
-	        pcp = row["new_stock_acc_pcp"]
-		pcr = row["change_percent"]
+	        pcp = round(row["change_percent"]*100,2)
+		pcr = round(row["mtm"]*100,2)
 		theme = ''
 	        rows.append((date,itime,stock_name,last_px,pcp,pcr,theme))
 
