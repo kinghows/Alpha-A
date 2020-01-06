@@ -43,9 +43,6 @@ Python
 
 <p align="center">
 	<img src="https://github.com/kinghows/Alpha-A/blob/master/Demo/01.jpg" alt="指数"  width="270" height="585">
-	<p align="center">
-		<em>指数</em>
-	</p>
 </p>
 
 ![新闻动态](https://github.com/kinghows/Alpha-A/blob/master/Demo/02.jpg)
