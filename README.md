@@ -43,8 +43,7 @@ Python
 
 <p align="center">
 	<img src="https://github.com/kinghows/Alpha-A/blob/master/Demo/01.jpg" alt="指数"  width="270" height="585">
+	<img src="https://github.com/kinghows/Alpha-A/blob/master/Demo/02.jpg" alt="新闻动态"  width="270" height="585">
+	<img src="https://github.com/kinghows/Alpha-A/blob/master/Demo/03.jpg" alt="异动池"  width="270" height="585">
+	<img src="https://github.com/kinghows/Alpha-A/blob/master/Demo/13.jpg" alt="市场分析"  width="270" height="585">
 </p>
-
-![新闻动态](https://github.com/kinghows/Alpha-A/blob/master/Demo/02.jpg)
-![异动池](https://github.com/kinghows/Alpha-A/blob/master/Demo/03.jpg)
-![市场分析](https://github.com/kinghows/Alpha-A/blob/master/Demo/13.jpg)
