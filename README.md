@@ -41,7 +41,14 @@ Python
 
 目录：Demo
 
-![指数](https://github.com/kinghows/Alpha-A/blob/master/Demo/01.jpg)
+<p align="center">
+	<img src="https://github.com/kinghows/Alpha-A/blob/master/Demo/01.jpg" alt="指数"  width="540" height="1170">
+	<p align="center">
+		<em>指数</em>
+	</p>
+</p>
+版权声明：本文为CSDN博主「_伊织_」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/lovechris00/article/details/82379382
 ![新闻动态](https://github.com/kinghows/Alpha-A/blob/master/Demo/02.jpg)
 ![异动池](https://github.com/kinghows/Alpha-A/blob/master/Demo/03.jpg)
 ![市场分析](https://github.com/kinghows/Alpha-A/blob/master/Demo/13.jpg)
